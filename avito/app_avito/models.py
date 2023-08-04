@@ -31,6 +31,13 @@ class Avito(models.Model):
         verbose_name="Дата редактирования"
     )
 
+    def __str__(self):
+        return f'Avito(id = {self.id}, title = {self.title}, price = {self.price})'
+
+    class Meta:
+        db_table = "avito"
+
+
 
 
 
