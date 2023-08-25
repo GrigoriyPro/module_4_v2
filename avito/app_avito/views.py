@@ -1,6 +1,6 @@
 from django.shortcuts import render, reverse, redirect
 from .models import Avito
-from .forms import AvitoForms
+from .forms import AvitoForm
 
 def index(request):
 
@@ -13,7 +13,7 @@ def top_sellers(request):
 
 def post_advertisement(request):
     if request.method == "POST":
-        form = AvitoForms(request.POST, request.FILES)
+        form = AvitoForm(request.POST, request.FILES)
         if form.is_valid():
             avito = Avito(**form.cleaned_data)
             avito.user = request.user
@@ -21,6 +21,6 @@ def post_advertisement(request):
             url = reverse('main-page')
             return redirect(url)
     else:
-        form = AvitoForms()
+        form = AvitoForm()
     context = {"form": form}
     return render(request, "advertisement-post.html", context=context)
