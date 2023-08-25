@@ -2,6 +2,9 @@ from django.db import models
 from django.contrib import admin
 from django.utils import timezone
 from django.utils.html import format_html
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 class Avito(models.Model):
 
@@ -34,6 +37,19 @@ class Avito(models.Model):
         verbose_name="Дата редактирования"
     )
 
+    user = models.ForeignKey(
+        User,
+        verbose_name="Пользователь",
+        on_delete=models.CASCADE
+    )
+
+    image = models.ImageField(
+        verbose_name="Изображение",
+        upload_to="avitos/",
+        null=True,
+        blank=True
+    )
+
     @admin.display(description="Дата создания")
     def created_date(self):
         if self.created_at.date() == timezone.now().date():
@@ -58,10 +74,25 @@ class Avito(models.Model):
             '<span style="color: purple; font-weight: bold;">{}</span>', updated_time_after
         )
 
+    @admin.display(description="Миниатюра")
+    def photo(self):
+        if self.image:
+            return format_html(
+                '<img src="{}" width="150" height="100">', self.image.url
+            )
+        else:
+            return format_html(
+                '<span style="color: red; font-weight: bold;"><i class="fas fa-image"></i> Нету фото!</span>'
+            )
+
     def __str__(self):
         return f'Avito(id = {self.id}, title = {self.title}, price = {self.price})'
 
     class Meta:
+
+        verbose_name= 'Объявление'
+        verbose_name_plural= "Объявления"
+
         db_table = "avito"
 
 
