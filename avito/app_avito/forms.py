@@ -32,7 +32,7 @@ class AvitoForm(ModelForm):
         }
 
     def clean_title(self):
-        title = self.cleaned_data['title']
+        title = self.cleaned_data.get('title')
         if len(title) > 50:
             raise ValidationError('Длина превышает 50 символов!')
         elif title[0] == '?' or title[0] == '!':

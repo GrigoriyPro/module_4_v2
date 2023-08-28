@@ -1,0 +1,29 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block active_3 %}active{% endblock %}
+{% block title%}Разместить объявление{% endblock %}
+
+
+{% block content %}
+
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="row mb-6 offset-sm-4">
+        <div class="col-4"><br>
+          <p style="font-weight:bold;font-size: 20px;">Название:{{ form.title }}</p>
+          <p style="font-weight:bold;font-size: 20px;">Описание:{{ form.description }}</p>
+          <p style="font-weight:bold;font-size: 20px;">Цена:{{ form.price }}</p>
+          <p style="font-weight:bold;font-size: 20px;">Торг:{{ form.auction }}</p>
+          <p style="font-weight:bold;font-size: 20px;">Изображение:{{ form.image }}</p>
+          <a href="{% url 'main-page' %}" class="btn btn-warning"><i class="fas fa-chevron-circle-left"></i> Назад</a>
+          <button type="submit" class="btn btn-success">Разместить</button>
+        </div>
+
+      </div>
+    </form>
+
+{% block scripts %}
+  <script src="js/bootstrap.bundle.min.js"></script>
+{% endblock %}
+
+{% endblock %}
