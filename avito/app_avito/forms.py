@@ -2,7 +2,6 @@ from django.forms import ModelForm, TextInput, Textarea, NumberInput, CheckboxIn
 from .models import Avito
 from django.core.exceptions import ValidationError
 
-
 class AvitoForm(ModelForm):
     class Meta:
         model = Avito

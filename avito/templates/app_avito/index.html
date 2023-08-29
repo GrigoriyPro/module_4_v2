@@ -1,11 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% block title%}Главная{% endblock %}
 {% block active_1 %}active{% endblock %}
-
 {% block content %}
-
 <div id="carouselExampleControls" class="carousel slide bg-primary" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -57,7 +54,6 @@
       </div>
     </form>
   </div>
-
   {% for adv in avitos %}
     <div class="col">
       <div class="card mb-2" style="max-width: 1200px; margin-top: 20px;">
@@ -70,9 +66,9 @@
           <div class="col-md-8">
             <div class="card-body">
               <h5 class="card-title">
-                <a href="advertisement.html" class="nav-link"><strong>Товар: {{ adv.title }}</strong></a>
+                <a href="{{ adv.get_absolute_url }}" class="nav-link"><strong>Товар: {{ adv.title }}</strong></a>
               </h5>
-              <a href="advertisement.html" class="nav-link">
+              <a href="{{ adv.get_absolute_url }}" class="nav-link">
                 <p class="card-text" style="font-weight: bold;">
                   {{ adv.description }}
                 </p>
@@ -87,7 +83,6 @@
       </div>
     </div>
   {% endfor %}
-
 </div>
 <footer style="padding: 100px;" class="bg-primary">
   <nav class="navbar navbar-expand-sm navbar-dark">

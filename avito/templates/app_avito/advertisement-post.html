@@ -2,10 +2,7 @@
 {% load static %}
 {% block active_3 %}active{% endblock %}
 {% block title%}Разместить объявление{% endblock %}
-
-
 {% block content %}
-
     <form method="post" enctype="multipart/form-data">
       {% csrf_token %}
       <div class="row mb-6 offset-sm-4">
@@ -18,12 +15,7 @@
           <a href="{% url 'main-page' %}" class="btn btn-warning"><i class="fas fa-chevron-circle-left"></i> Назад</a>
           <button type="submit" class="btn btn-success">Разместить</button>
         </div>
-
       </div>
     </form>
-
-{% block scripts %}
-  <script src="js/bootstrap.bundle.min.js"></script>
-{% endblock %}
-
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 {% endblock %}

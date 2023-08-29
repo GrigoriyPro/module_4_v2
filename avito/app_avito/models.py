@@ -91,20 +91,8 @@ class Avito(models.Model):
 
     def get_absolute_url(self):
         return reverse("adv", kwargs={"pk": self.pk})
-    class Meta:
 
+    class Meta:
         verbose_name= 'Объявление'
         verbose_name_plural= "Объявления"
-
         db_table = "avito"
-
-
-
-
-
-
-
-
-
-
-

@@ -38,5 +38,3 @@ class AvitoAdmin(admin.ModelAdmin):
         )
 
 admin.site.register(Avito, AvitoAdmin)
-
-

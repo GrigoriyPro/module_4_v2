@@ -4,11 +4,9 @@ from django.urls import reverse_lazy
 from django.contrib.auth import login, logout, authenticate
 from .form import MyUserCreationForm
 
-
 @login_required(login_url=reverse_lazy("login"))
 def profile_view(request):
     return render(request, "app_auth/profile.html")
-
 
 def login_view(request):
     redirect_url = reverse("profile")
@@ -30,12 +28,10 @@ def login_view(request):
 
     return render(request, "app_auth/login.html", context=context)
 
-
 def logout_view(request):
     redirect_url = reverse("login")
     logout(request)
     return redirect(redirect_url)
-
 
 def register_view(request):
     if request.method == "POST":

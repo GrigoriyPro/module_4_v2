@@ -3,7 +3,6 @@ from django.contrib.auth.forms import UserCreationForm
 
 User = get_user_model()
 
-
 class MyUserCreationForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

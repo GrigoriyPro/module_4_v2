@@ -13,7 +13,9 @@ def index(request):
         avitos = Avito.objects.filter(title__iexact=title)
     else:
         avitos = Avito.objects.all()
-    context = {"avitos": avitos}
+    context = {
+        "avitos": avitos
+    }
 
     return render(request, "app_avito/index.html", context=context)
 
@@ -38,13 +40,15 @@ def post_advertisement(request):
             return redirect(url)
     else:
         form = AvitoForm()
-    context = {"form": form}
+    context = {
+        "form": form
+    }
     return render(request, "app_avito/advertisement-post.html", context=context)
 
 def advertisement_view(request, pk):
     advertisement = Avito.objects.get(pk=pk)
     context = {
-        "advertisement": advertisement,
+        "advertisement": advertisement
     }
     return render(request, "app_avito/advertisement.html", context)
 

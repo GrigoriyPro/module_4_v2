@@ -1,19 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block active_6 %}active{% endblock %}
-
 {% if user.is_authenticated %}
   {% block title%}Профиль{% endblock %}
 {% endif %}
-
 {% block content %}
-
 <div class="col" style="margin: 50px;">
   <div class="display-2">
     <span class="badge bg-primary">Сейчас вы находитесь на сайте под ником {{ user }}.</span>
   </div>
 </div>
-
 <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
-
 {% endblock %}
